@@ -6,7 +6,7 @@
 /*   By: kojwatan <kojwatan@student.42tokyo.>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/21 14:11:21 by kojwatan          #+#    #+#             */
-/*   Updated: 2023/12/21 15:09:37 by kojwatan         ###   ########.fr       */
+/*   Updated: 2023/12/30 17:01:06 by kojwatan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,16 @@
 
 int	main(void)
 {
-	t_lstnum *num;
+	t_num	**stack;
+	t_num	*num1;
+	t_num	*num2;
 
-	num = ft_lstnumnew(10);
-	ft_printf("%d\n", num->content);
+	stack = NULL;
+	*stack = NULL;
+	num1 = num_new(10);
+	ft_printf("aa\n");
+	num_push(stack, num1);
+	num2 = num_new(20);
+	num_push(stack, num2);
 	return (0);
 }
