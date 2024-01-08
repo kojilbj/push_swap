@@ -6,7 +6,7 @@
 /*   By: kojwatan <kojwatan@student.42tokyo.>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/21 14:57:09 by kojwatan          #+#    #+#             */
-/*   Updated: 2023/12/30 17:01:11 by kojwatan         ###   ########.fr       */
+/*   Updated: 2024/01/08 22:35:03 by kojwatan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,18 @@ t_num	*num_new(int content)
 	return (new);
 }
 
-void	num_push(t_num **stack, t_num *new)
+void	push_stack(t_num **stack, t_num *new)
 {
 	new->next = *stack;
 	*stack = new;
+}
+
+t_num	*pop_stack(t_num **stack)
+{
+	t_num	*pop_ptr;
+
+	pop_ptr = *stack;
+	if (pop_ptr != NULL)
+		*stack = pop_ptr->next;
+	return (pop_ptr);
 }
