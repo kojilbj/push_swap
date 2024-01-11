@@ -6,11 +6,44 @@
 /*   By: kojwatan <kojwatan@student.42tokyo.>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/21 14:57:09 by kojwatan          #+#    #+#             */
-/*   Updated: 2024/01/08 22:35:03 by kojwatan         ###   ########.fr       */
+/*   Updated: 2024/01/11 11:11:28 by kojwatan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
+
+void	stack_init(t_num **stack, char *av)
+{
+	t_num	*new;
+
+	while (*av)
+	{
+		if (ft_isdigit(*av))
+		{
+			new = num_new(ft_atoi(av));
+			if (new == NULL)
+				exit(EXIT_FAILURE);
+			push_stack(stack, new);
+		}
+		while (ft_isdigit(*av))
+			av++;
+		while (*av == ' ')
+			av++;
+	}
+}
+
+void	print_stack(t_num *stack)
+{
+	t_num	*num;
+
+	num = stack;
+	while (num != NULL)
+	{
+		ft_printf("%d\n", num->content);
+		num = num->next;
+	}
+	ft_printf("%p\n", num);
+}
 
 t_num	*num_new(int content)
 {
@@ -26,8 +59,11 @@ t_num	*num_new(int content)
 
 void	push_stack(t_num **stack, t_num *new)
 {
-	new->next = *stack;
-	*stack = new;
+	if (new != NULL)
+	{
+		new->next = *stack;
+		*stack = new;
+	}
 }
 
 t_num	*pop_stack(t_num **stack)

@@ -1,26 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   push.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kojwatan <kojwatan@student.42tokyo.>       +#+  +:+       +#+        */
+/*   By: kojwatan <kojwatan@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/12/21 14:11:21 by kojwatan          #+#    #+#             */
-/*   Updated: 2024/01/11 11:12:47 by kojwatan         ###   ########.fr       */
+/*   Created: 2024/01/09 18:14:46 by kojwatan          #+#    #+#             */
+/*   Updated: 2024/01/09 18:15:15 by kojwatan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
 
-int	main(int ac, char *av[])
+void	push_a(t_num **a, t_num **b)
 {
-	t_num	*stack;
+	t_num 	*data;
 
-	if (ac < 2)
-		return (0);
-	stack = NULL;
-	stack_init(&stack, av[1]);
-	ft_printf("stack\n");
-	print_stack(stack);
-	return (0);
+	data = pop_stack(b);
+	push_stack(a, data);
+	ft_printf("pa\n");
+}
+
+void	push_b(t_num **b, t_num **a)
+{
+	t_num 	*data;
+
+	data = pop_stack(a);
+	push_stack(b, data);
+	ft_printf("pb\n");
 }
