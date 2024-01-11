@@ -6,7 +6,7 @@
 /*   By: kojwatan <kojwatan@student.42tokyo.>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/21 14:57:09 by kojwatan          #+#    #+#             */
-/*   Updated: 2024/01/11 11:11:28 by kojwatan         ###   ########.fr       */
+/*   Updated: 2024/01/11 17:18:16 by kojwatan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,21 @@ void	stack_init(t_num **stack, char *av)
 		while (*av == ' ')
 			av++;
 	}
+}
+
+int		count_stack(t_num *stack)
+{
+	int		i;
+	t_num	*curr;
+
+	i = 0;
+	curr = stack;
+	while (curr != NULL)
+	{
+		curr = curr->next;
+		i++;
+	}
+	return (i);
 }
 
 void	print_stack(t_num *stack)

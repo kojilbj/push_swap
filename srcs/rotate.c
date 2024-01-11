@@ -6,7 +6,7 @@
 /*   By: kojwatan <kojwatan@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 18:15:35 by kojwatan          #+#    #+#             */
-/*   Updated: 2024/01/09 18:16:04 by kojwatan         ###   ########.fr       */
+/*   Updated: 2024/01/11 16:46:21 by kojwatan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@ void	rotate(t_num **stack)
 	t_num	*curr;
 
 	top = *stack;
+	if (top == NULL || top->next == NULL)
+		return ;
 	*stack = top->next;
 	top->next = NULL;
 	curr = *stack;

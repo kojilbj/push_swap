@@ -10,6 +10,7 @@ typedef struct s_num
 }	t_num;
 
 //lst_util.c
+int		count_stack(t_num *stack);
 void	stack_init(t_num **stakc, char *av);
 void	print_stack(t_num *stack);
 t_num	*num_new(int conent);
