@@ -12,7 +12,8 @@ typedef struct s_num
 //lst_util.c
 int	count_stack(t_num *stack);
 t_num	*bottom_stack(t_num *stack);
-void	stack_init(t_num **stakc, char *av);
+void	stack_init_a(t_num **stakc, char *av);
+void	stack_init_b(t_num **stakc, char **av);
 void	print_stack(t_num *stack);
 t_num	*num_new(int conent);
 void	push_stack(t_num **stack, t_num *new);

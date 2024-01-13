@@ -6,7 +6,7 @@
 /*   By: kojwatan <kojwatan@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/11 22:01:14 by kojwatan          #+#    #+#             */
-/*   Updated: 2024/01/11 22:38:58 by kojwatan         ###   ########.fr       */
+/*   Updated: 2024/01/13 15:00:50 by kojwatan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,12 +29,14 @@ void	sort_a(t_num **stack)
 	bottom = bottom_stack(top);
 	while (i < 3)
 	{
-		if (top->content < top->next->content)
+		if (top->content > top->next->content)
 			swap_a(stack);
+		else if (top->content > bottom->content)
+			reverse_rotate_a(stack);
+		else if (top->next->content > bottom->content)
+			reverse_rotate_a(stack);
 		top = *stack;
 		bottom = bottom_stack(top);
-		if (top->content < bottom->content)
-			rotate_a(stack);
 		i++;
 	}
 }

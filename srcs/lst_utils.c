@@ -6,16 +6,21 @@
 /*   By: kojwatan <kojwatan@student.42tokyo.>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/21 14:57:09 by kojwatan          #+#    #+#             */
-/*   Updated: 2024/01/11 22:17:37 by kojwatan         ###   ########.fr       */
+/*   Updated: 2024/01/13 16:48:45 by kojwatan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
 
-void	stack_init(t_num **stack, char *av)
+void	stack_init_a(t_num **stack, char *av)
 {
 	t_num	*new;
 
+	if (*av == '\0')
+		{
+			ft_printf("Error\n");
+			exit(EXIT_FAILURE);
+		}
 	while (*av)
 	{
 		if (ft_isdigit(*av))
@@ -27,8 +32,41 @@ void	stack_init(t_num **stack, char *av)
 		}
 		while (ft_isdigit(*av))
 			av++;
+		if (!ft_isdigit(*av) && *av != '\0')
+		{
+			ft_printf("Error\n");
+			exit(EXIT_FAILURE);
+		}
 		while (*av == ' ')
 			av++;
+	}
+}
+
+void	stack_init_b(t_num **stack, char **av)
+{
+	t_num	*new;
+	int	i;
+
+	i = 1;
+	while (av[i])
+	{
+		new = num_new(ft_atoi(av[i]));
+		if (new == NULL)
+		{
+			ft_printf("Error\n");
+			exit(EXIT_FAILURE);
+		}
+		while (*av[i])
+		{
+			if (!ft_isdigit(*av[i]))
+			{
+				ft_printf("Error\n");
+				exit(EXIT_FAILURE);
+			}
+			av[i]++;
+		}
+		push_stack(stack, new);
+		i++;
 	}
 }
 
