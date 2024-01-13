@@ -10,7 +10,8 @@ typedef struct s_num
 }	t_num;
 
 //lst_util.c
-int		count_stack(t_num *stack);
+int	count_stack(t_num *stack);
+t_num	*bottom_stack(t_num *stack);
 void	stack_init(t_num **stakc, char *av);
 void	print_stack(t_num *stack);
 t_num	*num_new(int conent);
@@ -38,5 +39,9 @@ void	reverse_rotate(t_num **stack);
 void	reverse_rotate_a(t_num **a);
 void	reverse_rotate_b(t_num **b);
 void	reverse_rotate_ab(t_num **a, t_num **b);
+
+//sort.c
+void	sort(t_num **stack);
+void	sort_a(t_num **stack);
 
 # endif
