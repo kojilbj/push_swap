@@ -6,13 +6,13 @@
 #    By: kojwatan <kojwatan@student.42tokyo.>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/12/21 13:58:57 by kojwatan          #+#    #+#              #
-#    Updated: 2024/01/11 22:18:14 by kojwatan         ###   ########.fr        #
+#    Updated: 2024/01/15 02:11:12 by kojwatan         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 CC = cc
 CFLAGS = -Wextra -Werror -Wall
-SRCS = ./srcs/main.c ./srcs/lst_utils.c ./srcs/swap.c ./srcs/push.c ./srcs/rotate.c ./srcs/reverse_rotate.c ./srcs/sort.c
+SRCS = ./srcs/main.c ./srcs/stack_utils.c ./srcs/utils.c ./srcs/lst_utils.c ./srcs/swap.c ./srcs/push.c ./srcs/rotate.c ./srcs/reverse_rotate.c ./srcs/sort.c
 OBJS = $(SRCS:.c=.o)
 NAME = push_swap
 
