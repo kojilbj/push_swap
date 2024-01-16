@@ -6,7 +6,7 @@
 /*   By: kojwatan <kojwatan@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/11 22:01:14 by kojwatan          #+#    #+#             */
-/*   Updated: 2024/01/16 14:15:41 by kojwatan         ###   ########.fr       */
+/*   Updated: 2024/01/16 17:34:16 by kojwatan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -118,11 +118,115 @@ void	sort_b(t_num **a, t_num **b)
 	}
 }
 
+int	less_than_pivot_check(t_num *stack, int pivot)
+{
+	t_num	*curr;
+
+	curr = stack;
+	while (curr != NULL)
+	{
+		if (curr->rank <= pivot)
+			return (1);
+		curr = curr->next;
+	}
+	return (0);
+}
+
+int	greater_than_pivot_check(t_num *stack, int pivot)
+{
+	t_num	*curr;
+
+	curr = stack;
+	while (curr != NULL)
+	{
+		if (curr->rank > pivot)
+			return (1);
+		curr = curr->next;
+	}
+	return (0);
+}
+
+int	decide_pivot(t_num *stack)
+{
+	t_num	*curr;
+	int	sum;
+	int	i;
+
+	curr = stack;
+	sum = 0;
+	i = 0;
+	while (i < 3 && curr != NULL)
+	{
+		sum += curr->rank;
+		i++;
+		curr = curr->next;
+	}
+	return (sum / i);
+}
+
+int	is_limit(t_num *stack)
+{
+	int	i;
+	t_num	*curr;
+
+	i = 0;
+	curr = stack;
+	while (curr != NULL)
+	{
+		i++;
+		curr = curr->next;
+	}
+	return (i < 3);
+}
+
 void	quick_sort(t_num **a, t_num **b)
 {
 	int	pivot;
 
-	pivot = (*a)->next->rank;
-	while (
+	//仮に2個目のrankをpivotにする
+	pivot = decide_pivot(*a);
+	while (less_than_pivot_check(*a, pivot))
+	{
+		rotate_a(a);
+		if ((*a)->rank <= pivot)
+			push_b(b, a);
+	}
+	ft_printf("pivot\t%d\n", pivot);
+	ft_printf("a\n");
+	print_stack(*a);
+	ft_printf("b\n");
+	print_stack(*b);
+	pivot = decide_pivot(*b);
+	while (greater_than_pivot_check(*b, pivot))
+	{
+		rotate_a(b);
+		if ((*b)->rank > pivot)
+			push_a(a, b);
+	}
+	ft_printf("pivot\t%d\n", pivot);
+	ft_printf("a\n");
+	print_stack(*a);
+	ft_printf("b\n");
+	print_stack(*b);
+	pivot = decide_pivot(*b);
+	while (greater_than_pivot_check(*b, pivot))
+	{
+		rotate_a(b);
+		if ((*b)->rank > pivot)
+			push_a(a, b);
+	}
+	ft_printf("pivot\t%d\n", pivot);
+	ft_printf("a\n");
+	print_stack(*a);
+	ft_printf("b\n");
+	print_stack(*b);
+	push_a(a, b);
+	rotate_a(a);
+	push_a(a, b);
+	rotate_a(a);
+	ft_printf("a\n");
+	print_stack(*a);
+	ft_printf("b\n");
+	print_stack(*b);
 }
 

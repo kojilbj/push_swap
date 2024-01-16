@@ -6,7 +6,7 @@
 /*   By: kojwatan <kojwatan@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/15 02:08:15 by kojwatan          #+#    #+#             */
-/*   Updated: 2024/01/15 02:50:53 by kojwatan         ###   ########.fr       */
+/*   Updated: 2024/01/16 19:20:47 by kojwatan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,11 +15,13 @@
 int	stack_max(t_num *stack)
 {
 	int	max;
+	t_num	*top;
 	t_num	*curr;
 
 	max = stack->content;
-	curr = stack;
-	while (curr != NULL)
+	top = stack;
+	curr = top->next;
+	while (curr != top)
 	{
 		if (max < curr->content)
 			max = curr->content;
@@ -34,16 +36,18 @@ void	coordinate_compression(t_num *stack)
 	int	max;
 	int	i;
 	t_num	*curr;
+	t_num	*top;
 
-	curr = stack;
+	top = stack;
+	curr = top->next;
 	mini = curr->content;
 	max = stack_max(stack);
 	i = 0;
 	while (i < count_stack(stack))
 	{
-		curr = stack;
+		curr = top->next;
 		max = stack_max(stack);
-		while (curr != NULL)
+		while (curr != top)
 		{
 			if (max >= curr->content && curr->rank == 0)
 			{
@@ -52,8 +56,8 @@ void	coordinate_compression(t_num *stack)
 			}
 			curr = curr->next;
 		}
-		curr = stack;
-		while (curr != NULL)
+		curr = top->next;
+		while (curr != top)
 		{
 			if (mini == curr->content && curr->rank == 0)
 				curr->rank = i + 1;
@@ -67,10 +71,12 @@ int	count_stack(t_num *stack)
 {
 	int		i;
 	t_num	*curr;
+	t_num	*top;
 
 	i = 0;
-	curr = stack;
-	while (curr != NULL)
+	top = stack;
+	curr = top->next;;
+	while (curr != top)
 	{
 		curr = curr->next;
 		i++;

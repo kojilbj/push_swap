@@ -7,6 +7,7 @@ typedef struct s_num
 {
 	int		content;
 	int		rank;
+	struct s_num		*prev;
 	struct s_num		*next;
 }	t_num;
 
@@ -51,9 +52,11 @@ void	reverse_rotate_ab(t_num **a, t_num **b);
 
 //sort.c
 int	same_rank_check(t_num *stack, int num);
+int	less_than_pivot_check(t_num *stack, int pivod);
 void	sort(t_num **a, t_num **b);
 void	sort_ascending(t_num **stack);
 void	sort_descending(t_num **stack);
 void	sort_b(t_num **a, t_num **b);
+void	quick_sort(t_num **a, t_num **b);
 
 # endif
