@@ -6,7 +6,7 @@
 /*   By: kojwatan <kojwatan@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 18:16:20 by kojwatan          #+#    #+#             */
-/*   Updated: 2024/01/11 16:48:01 by kojwatan         ###   ########.fr       */
+/*   Updated: 2024/01/17 14:03:39 by kojwatan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,23 +14,8 @@
 
 void	reverse_rotate(t_num **stack)
 {
-	t_num	*bottom;
-	t_num	*new_bottom;
-
-	bottom = *stack;
-	new_bottom = *stack;
-	if (bottom == NULL)
-		return ;
-	while (bottom->next != NULL)
-	{
-		new_bottom = bottom;
-		bottom = bottom->next;
-	}
-	if (bottom == new_bottom)
-		return ;
-	new_bottom->next = NULL;
-	bottom->next = *stack;
-	*stack = bottom;
+	if (*stack != NULL)
+		*stack = (*stack)->prev;
 }
 
 void	reverse_rotate_a(t_num **a)

@@ -6,7 +6,7 @@
 /*   By: kojwatan <kojwatan@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/15 02:08:15 by kojwatan          #+#    #+#             */
-/*   Updated: 2024/01/16 19:20:47 by kojwatan         ###   ########.fr       */
+/*   Updated: 2024/01/18 02:44:59 by kojwatan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,19 +15,61 @@
 int	stack_max(t_num *stack)
 {
 	int	max;
-	t_num	*top;
 	t_num	*curr;
 
+	if (stack == NULL)
+		return (0);
 	max = stack->content;
-	top = stack;
-	curr = top->next;
-	while (curr != top)
+	curr = stack->next;
+	while (curr != stack)
 	{
 		if (max < curr->content)
 			max = curr->content;
 		curr = curr->next;
 	}
+	if (max < curr->content)
+		max = curr->content;
 	return (max);
+}
+
+int	stack_rank_max(t_num *stack)
+{
+	int	max;
+	t_num	*curr;
+
+	if (stack == NULL)
+		return (0);
+	max = stack->rank;
+	curr = stack->next;
+	while (curr != stack)
+	{
+		if (max < curr->rank)
+			max = curr->rank;
+		curr = curr->next;
+	}
+	if (max < curr->rank)
+		max = curr->rank;
+	return (max);
+}
+
+int	stack_rank_min(t_num *stack)
+{
+	int	min;
+	t_num	*curr;
+
+	if (stack == NULL)
+		return (0);
+	min = stack->rank;
+	curr = stack->next;
+	while (curr != stack)
+	{
+		if (min > curr->rank)
+			min = curr->rank;
+		curr = curr->next;
+	}
+	if (min > curr->rank)
+		min = curr->rank;
+	return (min);
 }
 
 void	coordinate_compression(t_num *stack)
@@ -35,53 +77,71 @@ void	coordinate_compression(t_num *stack)
 	int	mini;
 	int	max;
 	int	i;
+	int	dup_fg;
 	t_num	*curr;
-	t_num	*top;
 
-	top = stack;
-	curr = top->next;
-	mini = curr->content;
+	if (stack == NULL)
+		return ;
+	mini = stack->content;
 	max = stack_max(stack);
 	i = 0;
+	dup_fg = 0;
 	while (i < count_stack(stack))
 	{
-		curr = top->next;
+		curr = stack->next;
 		max = stack_max(stack);
-		while (curr != top)
+		while (curr != stack)
 		{
-			if (max >= curr->content && curr->rank == 0)
+			if (max >= curr->prev->content && curr->prev->rank == 0)
 			{
-				mini = curr->content;
+				mini = curr->prev->content;
 				max = mini;
 			}
 			curr = curr->next;
 		}
-		curr = top->next;
-		while (curr != top)
+		if (max >= curr->prev->content && curr->prev->rank == 0)
 		{
-			if (mini == curr->content && curr->rank == 0)
-				curr->rank = i + 1;
+			mini = curr->prev->content;
+			max = mini;
+		}
+		curr = stack->next;
+		while (curr != stack)
+		{
+			if (mini == curr->prev->content && curr->prev->rank == 0)
+			{
+				curr->prev->rank = i + 1;
+				if (dup_fg == 1)
+					exit_on_error();
+				dup_fg = 1;
+			}
 			curr = curr->next;
 		}
+		if (mini == curr->prev->content && curr->prev->rank == 0)
+		{
+			curr->prev->rank = i + 1;
+			if (dup_fg == 1)
+				exit_on_error();
+		}
 		i++;
+		dup_fg = 0;
 	}
 }
 
 int	count_stack(t_num *stack)
 {
-	int		i;
+	int		count;
 	t_num	*curr;
-	t_num	*top;
 
-	i = 0;
-	top = stack;
-	curr = top->next;;
-	while (curr != top)
+	if (stack == NULL)
+		return (0);
+	count = 1;
+	curr = stack->next;
+	while (curr != stack)
 	{
 		curr = curr->next;
-		i++;
+		count++;
 	}
-	return (i);
+	return (count);
 }
 
 void	stack_init_a(t_num **stack, char *av)
@@ -98,7 +158,10 @@ void	stack_init_a(t_num **stack, char *av)
 			if (new == NULL)
 				exit_on_error();
 			push_stack(stack, new);
+			rotate(stack);
 		}
+		if (*av == '-')
+			av++;
 		while (ft_isdigit(*av))
 			av++;
 		while (*av == ' ')
@@ -122,11 +185,14 @@ void	stack_init_b(t_num **stack, char **av)
 			exit_on_error();
 		while (*av[i])
 		{
+			if (*av[i] == '-')
+				av[i]++;
 			if (!ft_isdigit(*av[i]))
 				exit_on_error();
 			av[i]++;
 		}
 		push_stack(stack, new);
+		rotate(stack);
 		i++;
 	}
 	coordinate_compression(*stack);

@@ -1,38 +1,44 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   rotate.c                                           :+:      :+:    :+:   */
+/*   pivot_stack.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kojwatan <kojwatan@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/09 18:15:35 by kojwatan          #+#    #+#             */
-/*   Updated: 2024/01/17 14:02:47 by kojwatan         ###   ########.fr       */
+/*   Created: 2024/01/21 13:44:18 by kojwatan          #+#    #+#             */
+/*   Updated: 2024/01/21 13:56:15 by kojwatan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
 
-void	rotate(t_num **stack)
+t_pivot	*new_pivot(int pivot)
 {
-	if (*stack != NULL)
-		*stack = (*stack)->next;
+	t_pivot	*new;
+
+	new = malloc(sizeof(t_num));
+	if (new == NULL)
+		return (NULL);
+	new->next = NULL;
+	new->pivot = pivot;
+	return (new);
 }
 
-void	rotate_a(t_num **a)
+void	push_pivot_stack(t_pivot **stack, t_pivot *new)
 {
-	rotate(a);
-	ft_printf("ra\n");
+	if (new == NULL)
+		return ;
+	new->next = *stack;
+	*stack = new;
 }
 
-void	rotate_b(t_num **b)
+t_pivot	*pop_pivot_stack(t_pivot **stack)
 {
-	rotate(b);
-	ft_printf("rb\n");
-}
+	t_pivot	*pop_ptr;
 
-void	rotate_ab(t_num **a, t_num **b)
-{
-	rotate(a);
-	rotate(b);
-	ft_printf("rr\n");
+	if (*stack == NULL)
+		return NULL;
+	pop_ptr = *stack;
+	*stack = (*stack)->next;
+	return (pop_ptr);
 }

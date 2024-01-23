@@ -1,36 +1,44 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils.c                                            :+:      :+:    :+:   */
+/*   control_b.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kojwatan <kojwatan@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/15 01:55:46 by kojwatan          #+#    #+#             */
-/*   Updated: 2024/01/18 15:29:12 by kojwatan         ###   ########.fr       */
+/*   Created: 2024/01/18 03:22:38 by kojwatan          #+#    #+#             */
+/*   Updated: 2024/01/18 03:23:44 by kojwatan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
 
-void	exit_on_error(void)
+void	sort_b_ascending_util(t_num **stack)
 {
-	ft_printf("Error\n");
-	exit(EXIT_FAILURE);
+	int	top;
+	int	middle;
+	int	bottom;
+
+	top = (*stack)->rank;
+	middle = (*stack)->next->rank;
+	bottom = (*stack)->prev->rank;
+	if (top < middle && bottom < middle)
+		reverse_rotate_b(stack);
+	else if (middle < top && bottom < top)
+		rotate_b(stack);
+	else if (middle < top)
+		swap_b(stack);
 }
 
-void	free_stack(t_num *stack)
+void	sort_b_ascending(t_num **stack)
 {
-	t_num	*curr;
-	int	count;
 	int	i;
 
 	i = 0;
-	count = count_stack(stack);
-	curr = stack;
-	while (i < count - 1)
+	if (count_stack(*stack) == 1)
+		return ;
+	while (i < 2)
 	{
-		free(curr->prev);
-		curr = curr->next;
+		sort_b_ascending_util(stack);
 		i++;
 	}
 }
