@@ -6,7 +6,7 @@
 /*   By: kojwatan <kojwatan@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/21 16:18:38 by kojwatan          #+#    #+#             */
-/*   Updated: 2024/01/22 01:06:56 by kojwatan         ###   ########.fr       */
+/*   Updated: 2024/01/23 15:04:59 by kojwatan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,11 +15,6 @@
 
 void	move_a2b(t_num **a, t_num **b, int pivot_a, int sorted_pivot)
 {
-	if (sorted_pivot + 1 == (*a)->rank)
-	{
-		rotate_a(a);
-		return ;
-	}
 	while (less_than_pivot_check(*a, pivot_a, sorted_pivot))
 	{
 		if ((*a)->rank <= pivot_a && (*a)->rank > sorted_pivot)
