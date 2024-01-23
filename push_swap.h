@@ -11,15 +11,25 @@ typedef struct s_num
 	struct s_num		*next;
 }	t_num;
 
+typedef struct s_pivot
+{
+	int	pivot;
+	struct s_pivot	*next;
+}	t_pivot;
+
 //utils.c
 void	exit_on_error(void);
+void	free_stack(t_num *stack);
 
 //stack_utils.c
 int	stack_max(t_num *stack);
+int	stack_rank_max(t_num *stack);
+int	stack_rank_min(t_num *stack);
 void	coordinate_compression(t_num *stack);
 void	stack_init_a(t_num **stakc, char *av);
 void	stack_init_b(t_num **stakc, char **av);
 int	count_stack(t_num *stack);
+int	count_stack_greater_than_pivot(t_num *stack, int min);
 
 //lst_util.c
 t_num	*bottom_stack(t_num *stack);
@@ -51,12 +61,37 @@ void	reverse_rotate_b(t_num **b);
 void	reverse_rotate_ab(t_num **a, t_num **b);
 
 //sort.c
-int	same_rank_check(t_num *stack, int num);
-int	less_than_pivot_check(t_num *stack, int pivod);
+int	decide_pivot(t_num *stack, int min);
 void	sort(t_num **a, t_num **b);
-void	sort_ascending(t_num **stack);
-void	sort_descending(t_num **stack);
-void	sort_b(t_num **a, t_num **b);
+void	sort_426(t_num **a, t_num **b);
+
+//check.c
+int	less_than_pivot_check(t_num *stack, int pivod, int last_pivot);
+int	greater_than_pivot_check(t_num *stack, int pivot);
+int	is_sorted(t_num *stack);
+
+//move_stack2stack.c
+void	move_a2b(t_num **a, t_num **b, int pivot_a, int sorted_pivot);
+void	move_b2a(t_num **a, t_num **b, int pivot_b);
+
+//cotrol_a.c
+void	sort_a_ascending_util(t_num **stack);
+void	sort_a_ascending(t_num **stack);
+
+//cotrol_b.c
+void	sort_b_ascending_util(t_num **stack);
+void	sort_b_ascending(t_num **stack);
+
+//pivot_stack.c
+t_pivot	*new_pivot(int pivot);
+void	push_pivot_stack(t_pivot **stack, t_pivot *new);
+t_pivot		*pop_pivot_stack(t_pivot **stack);
+
+//quick_sort.c
 void	quick_sort(t_num **a, t_num **b);
+int	decide_pivot(t_num *stack, int min);
+void	quick_sort_util(t_num **a, t_num **b);
+int	count_stack_greater_than_pivot(t_num *stack, int min);
+void	devide_stack(t_num **a, t_num **b, t_pivot **pivot_stack);
 
 # endif
