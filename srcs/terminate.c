@@ -1,19 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils.c                                            :+:      :+:    :+:   */
+/*   terminate.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kojwatan <kojwatan@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: kojwatan <kojwatan@student.42tokyo.>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/15 01:55:46 by kojwatan          #+#    #+#             */
-/*   Updated: 2024/01/18 15:29:12 by kojwatan         ###   ########.fr       */
+/*   Created: 2024/01/24 14:17:32 by kojwatan          #+#    #+#             */
+/*   Updated: 2024/01/24 14:19:39 by kojwatan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
 
-void	exit_on_error(void)
+void	exit_on_error(t_num *stack)
 {
+	free_stack(stack);
 	ft_printf("Error\n");
 	exit(EXIT_FAILURE);
 }

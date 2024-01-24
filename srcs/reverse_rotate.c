@@ -6,7 +6,7 @@
 /*   By: kojwatan <kojwatan@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 18:16:20 by kojwatan          #+#    #+#             */
-/*   Updated: 2024/01/17 14:03:39 by kojwatan         ###   ########.fr       */
+/*   Updated: 2024/01/24 15:39:14 by kojwatan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,6 @@ void	reverse_rotate_a(t_num **a)
 	reverse_rotate(a);
 	ft_printf("rra\n");
 }
-
 
 void	reverse_rotate_b(t_num **b)
 {

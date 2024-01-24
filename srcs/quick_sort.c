@@ -6,7 +6,7 @@
 /*   By: kojwatan <kojwatan@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/23 12:57:51 by kojwatan          #+#    #+#             */
-/*   Updated: 2024/01/23 13:07:55 by kojwatan         ###   ########.fr       */
+/*   Updated: 2024/01/24 15:42:27 by kojwatan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 void	quick_sort(t_num **a, t_num **b)
 {
-	int	pivot_a;
-	int	sorted_pivot;
+	int		pivot_a;
+	int		sorted_pivot;
 	t_pivot	*pivot;
 	t_pivot	*pivot_stack;
 
@@ -56,7 +56,7 @@ void	quick_sort_util(t_num **a, t_num **b)
 
 int	count_stack_greater_than_pivot(t_num *stack, int min)
 {
-	int	count;
+	int		count;
 	t_num	*curr;
 
 	count = 0;
@@ -76,8 +76,8 @@ int	count_stack_greater_than_pivot(t_num *stack, int min)
 
 void	devide_stack(t_num **a, t_num **b, t_pivot **pivot_stack)
 {
-	int	pivot_b;
-	int	count_b;
+	int		pivot_b;
+	int		count_b;
 	t_pivot	*old;
 	t_pivot	*new;
 

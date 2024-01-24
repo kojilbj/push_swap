@@ -6,7 +6,7 @@
 /*   By: kojwatan <kojwatan@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/21 13:44:18 by kojwatan          #+#    #+#             */
-/*   Updated: 2024/01/21 13:56:15 by kojwatan         ###   ########.fr       */
+/*   Updated: 2024/01/24 15:40:07 by kojwatan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ t_pivot	*pop_pivot_stack(t_pivot **stack)
 	t_pivot	*pop_ptr;
 
 	if (*stack == NULL)
-		return NULL;
+		return (NULL);
 	pop_ptr = *stack;
 	*stack = (*stack)->next;
 	return (pop_ptr);

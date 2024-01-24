@@ -17,23 +17,24 @@ typedef struct s_pivot
 	struct s_pivot	*next;
 }	t_pivot;
 
-//utils.c
-void	exit_on_error(void);
+//terminate.c
+void	exit_on_error(t_num *stack);
 void	free_stack(t_num *stack);
 
 //stack_utils.c
 int	stack_max(t_num *stack);
 int	stack_rank_max(t_num *stack);
 int	stack_rank_min(t_num *stack);
-void	coordinate_compression(t_num *stack);
-void	stack_init_a(t_num **stakc, char *av);
-void	stack_init_b(t_num **stakc, char **av);
 int	count_stack(t_num *stack);
 int	count_stack_greater_than_pivot(t_num *stack, int min);
 
-//lst_util.c
+//stack_init.c
+void	stack_init_a(t_num **stakc, char *av);
+void	stack_init_b(t_num **stakc, char **av);
+void	coordinate_compression(t_num *stack);
+
+//control_stack.c
 t_num	*bottom_stack(t_num *stack);
-void	print_stack(t_num *stack);
 t_num	*num_new(int conent);
 void	push_stack(t_num **stack, t_num *new);
 t_num	*pop_stack(t_num **stack);
@@ -82,7 +83,7 @@ void	sort_a_ascending(t_num **stack);
 void	sort_b_ascending_util(t_num **stack);
 void	sort_b_ascending(t_num **stack);
 
-//pivot_stack.c
+//stack_pivot.c
 t_pivot	*new_pivot(int pivot);
 void	push_pivot_stack(t_pivot **stack, t_pivot *new);
 t_pivot		*pop_pivot_stack(t_pivot **stack);

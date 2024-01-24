@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   lst_utils.c                                        :+:      :+:    :+:   */
+/*   control_stack.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kojwatan <kojwatan@student.42tokyo.>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/12/21 14:57:09 by kojwatan          #+#    #+#             */
-/*   Updated: 2024/01/17 23:28:06 by kojwatan         ###   ########.fr       */
+/*   Created: 2024/01/24 14:23:50 by kojwatan          #+#    #+#             */
+/*   Updated: 2024/01/24 14:23:52 by kojwatan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,26 +18,6 @@ t_num	*bottom_stack(t_num *stack)
 		return (stack->prev);
 	else
 		return (NULL);
-}
-
-void	print_stack(t_num *stack)
-{
-	t_num	*curr;
-
-	if (stack == NULL)
-	{
-		ft_printf("stack is empty\n");
-		ft_printf("-----------------------\n");
-		return ;
-	}
-	curr = stack->next;
-	while (curr != stack)
-	{
-		ft_printf("content %d\trank %d\n", curr->prev->content, curr->prev->rank);
-		curr = curr->next;
-	}
-	ft_printf("content %d\trank %d\n", curr->prev->content, curr->prev->rank);
-	ft_printf("-----------------------\n");
 }
 
 t_num	*num_new(int content)

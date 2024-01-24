@@ -6,12 +6,11 @@
 /*   By: kojwatan <kojwatan@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/18 03:21:34 by kojwatan          #+#    #+#             */
-/*   Updated: 2024/01/18 03:23:23 by kojwatan         ###   ########.fr       */
+/*   Updated: 2024/01/24 15:40:58 by kojwatan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
-
 
 void	sort_a_ascending_util(t_num **stack)
 {

@@ -6,12 +6,11 @@
 /*   By: kojwatan <kojwatan@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/21 16:18:38 by kojwatan          #+#    #+#             */
-/*   Updated: 2024/01/23 15:04:59 by kojwatan         ###   ########.fr       */
+/*   Updated: 2024/01/24 15:41:17 by kojwatan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
-
 
 void	move_a2b(t_num **a, t_num **b, int pivot_a, int sorted_pivot)
 {
