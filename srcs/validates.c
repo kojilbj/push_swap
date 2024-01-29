@@ -6,7 +6,7 @@
 /*   By: kojwatan <kojwatan@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/28 21:44:09 by kojwatan          #+#    #+#             */
-/*   Updated: 2024/01/30 00:48:57 by kojwatan         ###   ########.fr       */
+/*   Updated: 2024/01/30 02:02:47 by kojwatan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,18 +48,18 @@ int	validate_duplicate(t_num *stack)
 	return (1);
 }
 
-int	validate(char **av, int ac)
+int	validate(char **av)
 {
 	int	i;
 	int	j;
 
 	i = 1;
 	j = 0;
-	if (ac == 2 && av[i][j] == '\0')
-		return (-2);
 	while (av[i] != NULL)
 	{
 		j = 0;
+		if (av[i][j] == '\0')
+			return (-1);
 		while (av[i][j] != '\0')
 		{
 			while (av[i][j] != '\0' && av[i][j] == ' ')

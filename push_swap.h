@@ -6,7 +6,7 @@
 /*   By: kojwatan <kojwatan@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/30 01:17:19 by kojwatan          #+#    #+#             */
-/*   Updated: 2024/01/30 01:33:47 by kojwatan         ###   ########.fr       */
+/*   Updated: 2024/01/30 02:03:02 by kojwatan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -115,7 +115,7 @@ void	devide_stack(t_num **a, t_num **b, t_pivot **pivot_stack);
 //validates.c
 int		validate_char(char c);
 int		validate_duplicate(t_num *stack);
-int		validate(char **av, int ac);
+int		validate(char **av);
 
 //validate_atoi.c
 int		validate_atoi(const char *str);
