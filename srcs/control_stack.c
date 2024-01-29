@@ -6,7 +6,7 @@
 /*   By: kojwatan <kojwatan@student.42tokyo.>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/24 14:23:50 by kojwatan          #+#    #+#             */
-/*   Updated: 2024/01/24 14:23:52 by kojwatan         ###   ########.fr       */
+/*   Updated: 2024/01/26 12:27:44 by kojwatan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ t_num	*num_new(int content)
 
 	new = malloc(sizeof(t_num));
 	if (new == NULL)
-		exit_on_error();
+		return (NULL);
 	new->content = content;
 	new->rank = 0;
 	new->prev = NULL;

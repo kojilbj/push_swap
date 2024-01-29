@@ -6,7 +6,7 @@
 /*   By: kojwatan <kojwatan@student.42tokyo.>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/21 14:11:21 by kojwatan          #+#    #+#             */
-/*   Updated: 2024/01/21 23:18:19 by kojwatan         ###   ########.fr       */
+/*   Updated: 2024/01/30 01:32:21 by kojwatan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,10 +21,13 @@ int	main(int ac, char *av[])
 		return (0);
 	a = NULL;
 	b = NULL;
-	if (ac == 2)
-		stack_init_a(&a, av[1]);
-	else
-		stack_init_b(&a, av);
+	if (validate(av, ac) == -2)
+		return (0);
+	if (validate(av, ac) == -1)
+		exit_on_error(NULL, NULL, NULL);
+	stack_init(&a, av);
+	if (validate_duplicate(a) == -1)
+		exit_on_error(a, NULL, NULL);
 	sort(&a, &b);
 	free_stack(a);
 	return (0);

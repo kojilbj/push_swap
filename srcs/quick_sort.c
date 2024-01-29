@@ -6,7 +6,7 @@
 /*   By: kojwatan <kojwatan@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/23 12:57:51 by kojwatan          #+#    #+#             */
-/*   Updated: 2024/01/24 15:42:27 by kojwatan         ###   ########.fr       */
+/*   Updated: 2024/01/30 01:40:26 by kojwatan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,8 @@ void	quick_sort(t_num **a, t_num **b)
 		}
 		sorted_pivot = pivot_a;
 		pivot = new_pivot(sorted_pivot);
+		if (pivot == NULL)
+			exit_on_error(*a, *b, pivot_stack);
 		push_pivot_stack(&pivot_stack, pivot);
 		while (pivot_stack != NULL)
 			devide_stack(a, b, &pivot_stack);
@@ -95,6 +97,8 @@ void	devide_stack(t_num **a, t_num **b, t_pivot **pivot_stack)
 	{
 		pivot_b = decide_pivot(*b, stack_rank_min(*b));
 		new = new_pivot(pivot_b);
+		if (new == NULL)
+			exit_on_error(*a, *b, *pivot_stack);
 		push_pivot_stack(pivot_stack, new);
 		move_b2a(a, b, pivot_b);
 	}
