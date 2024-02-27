@@ -6,12 +6,12 @@
 #    By: kojwatan <kojwatan@student.42tokyo.>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/12/21 13:58:57 by kojwatan          #+#    #+#              #
-#    Updated: 2024/01/29 23:57:35 by kojwatan         ###   ########.fr        #
+#    Updated: 2024/02/27 17:11:18 by kojwatan         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 CC = cc
-CFLAGS = -Wextra -Werror -Wall -g -fsanitize=address
+CFLAGS = -Wextra -Werror -Wall
 HEAD = ../push_swap.h
 SRCS = ./srcs/main.c ./srcs/stack_utils.c \
 	./srcs/terminate.c ./srcs/control_stack.c \
