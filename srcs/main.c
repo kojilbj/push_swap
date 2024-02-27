@@ -6,7 +6,7 @@
 /*   By: kojwatan <kojwatan@student.42tokyo.>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/21 14:11:21 by kojwatan          #+#    #+#             */
-/*   Updated: 2024/01/30 02:02:30 by kojwatan         ###   ########.fr       */
+/*   Updated: 2024/02/27 14:49:35 by kojwatan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ int	main(int ac, char *av[])
 		return (0);
 	a = NULL;
 	b = NULL;
-	if (validate(av, ac) == -1)
+	if (validate(av) == -1)
 		exit_on_error(NULL, NULL, NULL);
 	stack_init(&a, av);
 	if (validate_duplicate(a) == -1)
