@@ -6,7 +6,7 @@
 /*   By: kojwatan <kojwatan@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/28 21:44:09 by kojwatan          #+#    #+#             */
-/*   Updated: 2024/01/30 02:02:47 by kojwatan         ###   ########.fr       */
+/*   Updated: 2024/02/27 15:09:25 by kojwatan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,8 @@ int	validate_duplicate(t_num *stack)
 {
 	t_num	*curr;
 
+	if (stack == NULL)
+		return (-1);
 	curr = stack->next;
 	while (curr != stack)
 	{
