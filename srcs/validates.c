@@ -6,7 +6,7 @@
 /*   By: kojwatan <kojwatan@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/28 21:44:09 by kojwatan          #+#    #+#             */
-/*   Updated: 2024/02/27 15:09:25 by kojwatan         ###   ########.fr       */
+/*   Updated: 2024/02/27 15:43:26 by kojwatan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,20 @@ int	validate_duplicate(t_num *stack)
 	return (1);
 }
 
+int	empty_check(char *str)
+{
+	int	i;
+
+	i = 0;
+	while (str[i] != '\0')
+	{
+		if (str[i] != ' ')
+			return (1);
+		i++;
+	}
+	return (-1);
+}
+
 int	validate(char **av)
 {
 	int	i;
@@ -60,7 +74,7 @@ int	validate(char **av)
 	while (av[i] != NULL)
 	{
 		j = 0;
-		if (av[i][j] == '\0')
+		if (empty_check(av[i]) == -1)
 			return (-1);
 		while (av[i][j] != '\0')
 		{
