@@ -6,7 +6,7 @@
 /*   By: kojwatan <kojwatan@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/29 23:54:38 by kojwatan          #+#    #+#             */
-/*   Updated: 2024/01/30 01:05:10 by kojwatan         ###   ########.fr       */
+/*   Updated: 2024/03/15 23:48:58 by kojwatan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ static long	validate_strtol(const char *str, int sign)
 	}
 	if (*str != '\0' && *str != ' ')
 		return (-1);
-	if (sign == -1 && result == 0)
+	if (result == 0)
 		return (-1);
 	return (1);
 }

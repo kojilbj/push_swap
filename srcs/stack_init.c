@@ -6,7 +6,7 @@
 /*   By: kojwatan <kojwatan@student.42tokyo.>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/24 14:27:45 by kojwatan          #+#    #+#             */
-/*   Updated: 2024/01/30 01:30:48 by kojwatan         ###   ########.fr       */
+/*   Updated: 2024/03/15 23:44:11 by kojwatan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ void	stack_init(t_num **stack, char **av)
 				j++;
 			if (av[i][j] != '\0')
 				stack_init_util(stack, &av[i][j]);
-			if (av[i][j] == '-')
+			if (av[i][j] == '-' || av[i][j] == '+')
 				j++;
 			while (av[i][j] != '\0' && ft_isdigit(av[i][j]))
 				j++;

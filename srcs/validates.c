@@ -6,7 +6,7 @@
 /*   By: kojwatan <kojwatan@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/28 21:44:09 by kojwatan          #+#    #+#             */
-/*   Updated: 2024/02/27 15:43:26 by kojwatan         ###   ########.fr       */
+/*   Updated: 2024/03/15 23:42:55 by kojwatan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int	validate_char(char c)
 {
-	if (c == ' ' || c == '-' || ('0' <= c && c <= '9'))
+	if (c == '+' || c == ' ' || c == '-' || ('0' <= c && c <= '9'))
 		return (1);
 	else
 		return (-1);
@@ -82,7 +82,7 @@ int	validate(char **av)
 				j++;
 			if (validate_atoi(&av[i][j]) == -1)
 				return (-1);
-			if (av[i][j] == '-')
+			if (av[i][j] == '-' || av[i][j] == '+')
 				j++;
 			while (av[i][j] != '\0' && ft_isdigit(av[i][j]))
 				j++;
